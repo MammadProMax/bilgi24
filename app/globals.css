@@ -74,3 +74,10 @@
       @apply bg-background text-foreground;
    }
 }
+
+/* swiper customization */
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+   font-size: 40px !important;
+}

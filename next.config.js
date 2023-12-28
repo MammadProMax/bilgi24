@@ -4,6 +4,15 @@ const withNextIntl = require("next-intl/plugin")(
 );
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}; // other configs
+const nextConfig = {
+   images: {
+      remotePatterns: [
+         {
+            protocol: "https",
+            hostname: "bilgi24.net",
+         },
+      ],
+   },
+}; // other configs
 
 module.exports = withNextIntl(nextConfig);

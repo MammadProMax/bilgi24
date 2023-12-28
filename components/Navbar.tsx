@@ -1,14 +1,14 @@
 import React from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
+import { LogIn, Plus } from "lucide-react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import LogoIcon from "./global/LogoIcon";
 import NavSearch from "./NavSearch";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "./ui/button";
-import { LogIn, Plus } from "lucide-react";
 import NavSidebar from "./NavSidebar";
 import NavLang from "./NavLang";
+import { buttonVariants } from "./ui/button";
 
 export default function Navbar() {
    return (
@@ -22,7 +22,7 @@ export default function Navbar() {
                   <NavSearch className="bg-primary lg:w-96 w-64 placeholder:text-gray-300 ring-offset-muted-foreground focus-visible:ring-teal-900" />
                </div>
             </div>
-            <div className="flex items-center gap-x-4">
+            <div className="flex items-center gap-x-0.5 md:gap-x-4">
                <div className="md:block hidden">
                   <NavLang />
                </div>
