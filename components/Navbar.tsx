@@ -19,7 +19,7 @@ export default function Navbar() {
                   <LogoIcon />
                </Link>
                <div className="px-3 hidden md:block">
-                  <NavSearch className="bg-primary lg:w-96 w-64 placeholder:text-gray-300 ring-offset-muted-foreground focus-visible:ring-teal-900" />
+                  <NavSearch className="bg-primary lg:w-96 w-64 placeholder:text-gray-300 focus-visible:ring-teal-900" />
                </div>
             </div>
             <div className="flex items-center gap-x-0.5 md:gap-x-4">

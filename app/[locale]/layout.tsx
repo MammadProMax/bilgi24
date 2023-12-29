@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans, Dancing_Script } from "next/font/google";
 import "../globals.css";
 
+import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/providers/index";
-const inter = Inter({ subsets: ["latin"] });
+
+// fonts
+const fontSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const fontDancingScript = Dancing_Script({
+   subsets: ["latin"],
+   variable: "--font-dancing-script",
+});
 
 export const metadata: Metadata = {
    title: "Create Next App",
@@ -22,9 +29,17 @@ export default function RootLayout({
 }) {
    return (
       <html lang={params.locale}>
-         <body className="min-h-screen">
+         <body
+            className={cn(
+               "min-h-screen",
+               fontDancingScript.variable,
+               fontSans.variable
+            )}
+         >
             <Providers>
-               <Navbar />
+               <nav className="sticky top-0 z-50">
+                  <Navbar />
+               </nav>
                {children}
             </Providers>
          </body>
