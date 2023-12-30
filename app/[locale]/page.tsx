@@ -23,7 +23,7 @@ export default function Home({ params }: PageProps) {
       <MainPageContext locale={params.locale}>
          {/* page context */}
          <>
-            <section className="text-accent pt-[88px] pb-12 bg-primary">
+            <section className="text-accent pb-12 bg-primary">
                <MaxWidthWrapper>
                   <SliderSection />
                </MaxWidthWrapper>

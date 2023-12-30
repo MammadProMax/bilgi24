@@ -40,6 +40,8 @@ export default function RootLayout({
                <nav className="fixed inset-x-0 top-0 z-50">
                   <Navbar />
                </nav>
+               {/* seperator */}
+               <div className="pt-[72px] w-full bg-primary" />
                {children}
             </Providers>
          </body>

@@ -17,7 +17,8 @@ import { cn } from "@/lib/utils";
 
 export default function CategoriesSection() {
    // categories fetched by api
-   const { fetchedData, isLoadingContent } = useContext(mainPageContext);
+   const { fetchedData, isLoadingContent, locale } =
+      useContext(mainPageContext);
 
    const loopLoading = new Array(18).fill(null);
    const loadingContent = (
@@ -50,7 +51,7 @@ export default function CategoriesSection() {
                   {fetchedData?.categories.map((category) => (
                      <Link
                         key={category.id}
-                        href={"/"}
+                        href={`/${locale}/category/${category.id}`}
                         className="w-full place-self-center"
                      >
                         <CategoryCard category={category} />

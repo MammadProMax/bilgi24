@@ -22,10 +22,21 @@ export type Category = {
    count: number;
 };
 
+export type Post = {
+   id: string;
+   title: string;
+   state: { name: string };
+   city: { name: string };
+   price: number;
+   createdAt: string;
+   image: string;
+};
+
 export type QueryData = {
    data: {
       banners: Banner[];
       categories: Category[];
+      recent_posts: Post[];
    };
 };
 
