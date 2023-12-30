@@ -42,7 +42,7 @@ export default function CategoriesSection() {
             Select Category
          </h1>
 
-         {true ? (
+         {isLoadingContent ? (
             loadingContent
          ) : (
             <>
