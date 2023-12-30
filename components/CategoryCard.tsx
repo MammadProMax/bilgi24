@@ -17,18 +17,19 @@ export default function CategoryCard({
 }: CategoryCardProps) {
    return (
       <Card
+         onContextMenu={(ev) => ev.preventDefault()}
          className={cn(
-            "bg-primary text-center px-6 py-3 transition duration-300 space-y-1 sm:space-y-3 hover:shadow-xl hover:shadow-muted-foreground ring-4 ring-secondary w-36 h-32 flex flex-col items-center justify-center rounded-3xl",
+            "bg-primary text-center text-sm px-2 py-3 transition duration-300 space-y-1 sm:space-y-3 hover:shadow-xl hover:shadow-muted-foreground w-full h-[8.5rem] flex flex-col items-center justify-center rounded-sm border-none",
             className
          )}
       >
          <Image
             alt="Category Image Icon"
             src={category.icon.path}
-            width={size ?? 46}
-            height={size ?? 46}
+            width={size ?? 60}
+            height={size ?? 60}
          />
-         <CardDescription className="text-muted font-sans max-sm:text-xs ">
+         <CardDescription className="text-muted font-sans text-sm leading-tight line-clamp-2 !mt-2 px-2.5">
             {category.name}
          </CardDescription>
       </Card>

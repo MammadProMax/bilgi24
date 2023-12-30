@@ -87,7 +87,7 @@ export default function NavLang() {
             </PopoverTrigger>
          </Button>
 
-         <PopoverContent className="w-20 translate-y-2 p-0">
+         <PopoverContent className="w-20 translate-y-2 p-0 overflow-hidden">
             <div className="flex flex-col items-center">
                {languages.map((lang) => (
                   <Link

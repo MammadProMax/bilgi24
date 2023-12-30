@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -11,15 +13,33 @@ import NavLang from "./NavLang";
 import { buttonVariants } from "./ui/button";
 
 export default function Navbar() {
+   const [navIsTop, setNavIsTop] = useState(true);
+
+   useEffect(() => {
+      const handleScrollEvent = () => {
+         if (window.scrollY === 0) setNavIsTop(true);
+         else setNavIsTop(false);
+      };
+
+      window.addEventListener("scroll", handleScrollEvent);
+
+      return () => window.removeEventListener("scroll", handleScrollEvent);
+   }, []);
+
    return (
-      <div className="bg-primary py-6 text-primary-foreground">
+      <div
+         className={cn(
+            "bg-primary py-4 text-primary-foreground",
+            !navIsTop && "shadow-md backdrop-blur-sm bg-primary/80"
+         )}
+      >
          <MaxWidthWrapper className="flex items-center justify-between">
             <div className="flex items-center">
                <Link href="/">
                   <LogoIcon />
                </Link>
                <div className="px-3 hidden md:block">
-                  <NavSearch className="bg-primary lg:w-96 w-64 placeholder:text-gray-300 focus-visible:ring-teal-900" />
+                  <NavSearch className="bg-transparent lg:w-96 w-64 placeholder:text-gray-300 focus-visible:ring-teal-900" />
                </div>
             </div>
             <div className="flex items-center gap-x-0.5 md:gap-x-4">

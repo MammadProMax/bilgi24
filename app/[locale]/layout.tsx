@@ -31,13 +31,13 @@ export default function RootLayout({
       <html lang={params.locale}>
          <body
             className={cn(
-               "min-h-screen",
+               "min-h-screen font-sans",
                fontDancingScript.variable,
                fontSans.variable
             )}
          >
             <Providers>
-               <nav className="sticky top-0 z-50">
+               <nav className="fixed inset-x-0 top-0 z-50">
                   <Navbar />
                </nav>
                {children}
