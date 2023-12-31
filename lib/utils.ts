@@ -13,3 +13,8 @@ export function formatCurrency(value: number) {
       maximumFractionDigits: 1,
    }).format(value);
 }
+
+export const formatDate = (
+   value: string,
+   option?: Intl.DateTimeFormatOptions
+) => new Date(value).toLocaleDateString("en-US");

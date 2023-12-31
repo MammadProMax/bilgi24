@@ -44,7 +44,7 @@ export default function Home({ params }: PageProps) {
                   </div>
                </MaxWidthWrapper>
             </section>
-            <section>
+            <section id="showcase">
                <MaxWidthWrapper className="max-w-screen-xl">
                   <ShowcaseSection />
                </MaxWidthWrapper>

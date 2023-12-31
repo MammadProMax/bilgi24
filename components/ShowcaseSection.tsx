@@ -1,8 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
+
 import ShowcaseSorting from "@/components/ShowcaseSorting";
-import ShowcaseView from "@/components/ShowcaseView";
+import ShowcaseLoading from "./ShowcaseLoading";
+
+// lazyloading components
+const ShowcaseView = dynamic(() => import("@/components/ShowcaseView"), {
+   loading: () => <ShowcaseLoading />,
+});
 
 export default function ShowcaseSection() {
    const [selectValue, setSelectValue] = useState("newest");
