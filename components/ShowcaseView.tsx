@@ -18,8 +18,7 @@ import {
    PaginationPrevious,
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
-import Skeleton from "react-loading-skeleton";
+
 import ShowcaseLoading from "./ShowcaseLoading";
 import ShowcaseCardGrid from "./ShowcaseCardGrid";
 
@@ -48,7 +47,7 @@ export default function ShowcaseView({ isGridLayout }: ShowcaseViewProps) {
       <ShowcaseLoading />
    ) : (
       <>
-         {/* linear cards div */}
+         {/* linear showcase cards */}
          {!isGridLayout && (
             <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
                {displayPosts.map((post) => (
@@ -58,7 +57,7 @@ export default function ShowcaseView({ isGridLayout }: ShowcaseViewProps) {
                ))}
             </div>
          )}
-         {/* grid layout showcase */}
+         {/* grid showcase cards */}
          {isGridLayout && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-6 place-items-center max-w-5xl mx-auto">
                {displayPosts.map((post) => (

@@ -5,6 +5,8 @@ import "../globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/providers/index";
+import Footer from "@/components/Footer";
+import BottomNavbar from "@/components/BottomNavbar";
 
 // fonts
 const fontSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
@@ -42,7 +44,16 @@ export default function RootLayout({
                </nav>
                {/* seperator */}
                <div className="pt-[72px] w-full bg-primary" />
+               {/* seperator */}
+
                {children}
+               <Footer />
+
+               {/* todo : add a bottom navbar  */}
+               <div className="pb-14 md:hidden"></div>
+               <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
+                  <BottomNavbar />
+               </div>
             </Providers>
          </body>
       </html>

@@ -31,7 +31,7 @@ export default function ShowcaseSection() {
          </div>
 
          {/* vitrin */}
-         <div className="pb-24">
+         <div className="pb-6">
             <ShowcaseView isGridLayout={layoutGrid} />
          </div>
       </>

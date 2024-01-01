@@ -10,7 +10,7 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 
 export default function ShowcaseCardGrid({ post }: { post: Post }) {
    return (
-      <Card className="flex flex-col justify-between gap-x-3 w-fit h-[396px] p-4 shadow-md space-y-3 overflow-hidden transition duration-300 hover:-translate-y-2">
+      <Card className="flex flex-col justify-between gap-x-3 w-fit h-[420px] p-4 shadow-md space-y-3 overflow-hidden transition duration-300 hover:-translate-y-2">
          <div className="w-full flex flex-col gap-4">
             <Image
                alt="product image"
