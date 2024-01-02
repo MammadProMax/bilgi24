@@ -91,10 +91,13 @@ export default function NavUser({ session, locale }: NavUserProps) {
             {userNavOptions(locale).map((option, index) => (
                <div
                   key={index}
-                  className="flex items-center gap-x-2 p-2 rounded-md hover:bg-muted transition-colors duration-200 ease-in-out cursor-pointer"
+                  className="group flex items-center gap-x-2 p-2 rounded-md hover:bg-muted transition-colors duration-200 ease-in-out cursor-pointer"
                >
-                  <option.Icon className="text-muted-foreground w-5 h-5" />
-                  <span className="text-muted-foreground text-sm">
+                  <option.Icon
+                     className="text-muted-foreground w-5 h-5
+                  transition duration-200 group-hover:text-foreground/40 group-hover:fill-secondary"
+                  />
+                  <span className="text-muted-foreground text-sm group-hover:text-primary">
                      {option.title}
                   </span>
                </div>
