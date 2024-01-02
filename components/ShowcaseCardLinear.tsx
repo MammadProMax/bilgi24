@@ -9,6 +9,8 @@ import { Button } from "./ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
 export default function ShowcaseCardLinear({ post }: { post: Post }) {
+   const slugToTitle = (slug: string) => slug.split("-").join(" ");
+
    return (
       <Card className="flex items-center gap-x-3 w-full p-3 shadow-md overflow-hidden transition duration-300 hover:translate-x-2">
          <Image
@@ -20,7 +22,7 @@ export default function ShowcaseCardLinear({ post }: { post: Post }) {
          />
          <div className="flex-[0.6] space-y-1.5 sm:space-y-0.5">
             <h6 className="line-clamp-1 font-semibold text-sm sm:text-base">
-               {post.title}
+               {slugToTitle(post.slug)}
             </h6>
             <div className="flex items-center justify-start gap-x-1">
                <MapPin

@@ -32,7 +32,7 @@ const footerContent: FooterContent[] = [
 
 export default function Footer() {
    return (
-      <div className="w-full bg-primary h-64 pt-9 hidden md:block">
+      <div className="w-full bg-primary h-60 pt-9 hidden md:block">
          <MaxWidthWrapper>
             <div className="w-full flex justify-around">
                {footerContent.map((content, index) => (

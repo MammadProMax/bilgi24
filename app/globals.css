@@ -74,3 +74,40 @@
       @apply bg-background text-foreground;
    }
 }
+
+/* Firefox */
+* {
+   scrollbar-width: thin;
+   scrollbar-color: #f5b719 #dfe9eb;
+}
+
+/* Chrome, Edge and Safari */
+.scroll-scondary::-webkit-scrollbar {
+   height: 8px;
+   width: 8px;
+}
+.scroll-scondary::-webkit-scrollbar-track {
+   border-radius: 5px;
+   background-color: #dfe9eb;
+}
+
+.scroll-scondary::-webkit-scrollbar-track:hover {
+   background-color: #dfe9eb;
+}
+
+.scroll-scondary::-webkit-scrollbar-track:active {
+   background-color: #dfe9eb;
+}
+
+.scroll-scondary::-webkit-scrollbar-thumb {
+   border-radius: 11px;
+   background-color: #f5b719;
+}
+
+.scroll-scondary::-webkit-scrollbar-thumb:hover {
+   background-color: #ffcc01;
+}
+
+.scroll-scondary::-webkit-scrollbar-thumb:active {
+   background-color: #ffcc01;
+}

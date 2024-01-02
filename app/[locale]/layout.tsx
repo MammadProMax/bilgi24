@@ -33,14 +33,14 @@ export default function RootLayout({
       <html lang={params.locale}>
          <body
             className={cn(
-               "min-h-screen font-sans",
+               "min-h-screen font-sans scroll-scondary",
                fontDancingScript.variable,
                fontSans.variable
             )}
          >
             <Providers>
                <nav className="fixed inset-x-0 top-0 z-50">
-                  <Navbar />
+                  <Navbar locale={params.locale} />
                </nav>
                {/* seperator */}
                <div className="pt-[72px] w-full bg-primary" />
@@ -52,7 +52,7 @@ export default function RootLayout({
                {/* todo : add a bottom navbar  */}
                <div className="pb-14 md:hidden"></div>
                <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
-                  <BottomNavbar />
+                  <BottomNavbar locale={params.locale} />
                </div>
             </Providers>
          </body>

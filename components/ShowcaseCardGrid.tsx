@@ -9,6 +9,8 @@ import { Calendar, MapPin } from "lucide-react";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
 export default function ShowcaseCardGrid({ post }: { post: Post }) {
+   const slugToTitle = (slug: string) => slug.split("-").join(" ");
+
    return (
       <Card className="flex flex-col justify-between gap-x-3 w-fit h-[420px] p-4 shadow-md space-y-3 overflow-hidden transition duration-300 hover:-translate-y-2">
          <div className="w-full flex flex-col gap-4">
@@ -20,7 +22,7 @@ export default function ShowcaseCardGrid({ post }: { post: Post }) {
                className="aspect-square object-cover rounded-md"
             />
             <h6 className="font-semibold text-sm sm:text-base line-clamp-2 max-w-60">
-               {post.title}
+               {slugToTitle(post.slug)}
             </h6>
          </div>
 

@@ -1,9 +1,11 @@
 "use client";
 
-import { Heart, Home, LucideIcon, Mail, Plus, UserIcon } from "lucide-react";
 import React from "react";
-import { Button, buttonVariants } from "./ui/button";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+
+import { Heart, Home, LucideIcon, Mail, Plus, UserIcon } from "lucide-react";
+import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 type Navigations = {
@@ -15,17 +17,17 @@ type Navigations = {
 const navigations: Navigations[] = [
    {
       name: "User",
-      href: "/",
+      href: "/user",
       Icon: UserIcon,
    },
    {
       name: "Messages",
-      href: "/",
+      href: "/message",
       Icon: Mail,
    },
    {
       name: "Watchlist",
-      href: "/",
+      href: "/watchlist",
       Icon: Heart,
    },
    {
@@ -35,24 +37,34 @@ const navigations: Navigations[] = [
    },
 ];
 
-export default function BottomNavbar() {
+export default function BottomNavbar({ locale }: { locale: string }) {
+   const pathname = usePathname();
+
+   const isActive = (href: string) =>
+      href === "/" ? pathname === `/${locale}` : pathname.includes(href);
+
    return (
       <div className="bg-accent shadow-md border-t border-t-border relative">
          <div className="w-full h-14 flex justify-around items-center">
             {navigations.map((nav, index) => (
                <Link
-                  href={nav.href}
+                  href={`/${locale}${nav.href}`}
                   key={index}
                   className={cn(
                      buttonVariants({ variant: "ghost" }),
                      "hover:bg-white"
                   )}
                >
-                  <nav.Icon className="text-muted-foreground" />
+                  <nav.Icon
+                     className={cn(
+                        "text-muted-foreground",
+                        isActive(nav.href) && "text-secondary"
+                     )}
+                  />
                </Link>
             ))}
             <div className="absolute -top-4">
-               <button className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-secondary flex items-center justify-center shadow-md hover:bg-secondary-dark transition-colors duration-200 ease-in-out">
+               <button className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-secondary flex items-center justify-center shadow-md hover:bg-[#e3a916] transition-colors duration-200 ease-in-out">
                   <Plus className="text-white" />
                </button>
             </div>

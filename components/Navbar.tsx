@@ -2,17 +2,22 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { useSession } from "@/auth/client";
 
 import { LogIn, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import LogoIcon from "./global/LogoIcon";
 import NavSearch from "./NavSearch";
 import NavSidebar from "./NavSidebar";
 import NavLang from "./NavLang";
 import { buttonVariants } from "./ui/button";
+import NavUser from "./NavUser";
 
-export default function Navbar() {
+export default function Navbar({ locale }: { locale: string }) {
+   const { session } = useSession();
+   console.log(session);
+
    const [navIsTop, setNavIsTop] = useState(true);
 
    useEffect(() => {
@@ -47,16 +52,21 @@ export default function Navbar() {
                   <NavLang />
                </div>
 
-               <Link
-                  href="/"
-                  className={cn(
-                     buttonVariants({ variant: "outline", size: "sm" }),
-                     "bg-inherit"
-                  )}
-               >
-                  Sign in
-                  <LogIn className="w-4 h-4 mx-1" />
-               </Link>
+               {!session?.userId ? (
+                  <Link
+                     href={`/${locale}/login`}
+                     className={cn(
+                        buttonVariants({ variant: "outline", size: "sm" }),
+                        "bg-inherit"
+                     )}
+                  >
+                     <span className="hidden sm:inline">Sign in</span>
+                     <LogIn className="w-4 h-4 mx-1" />
+                  </Link>
+               ) : (
+                  <NavUser session={session} locale={locale} />
+               )}
+
                <Link
                   href="/"
                   className={cn(

@@ -24,7 +24,7 @@ export type Category = {
 
 export type Post = {
    id: string;
-   title: string;
+   slug: string;
    state: { name: string };
    city: { name: string };
    price: number;
