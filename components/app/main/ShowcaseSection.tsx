@@ -3,13 +3,16 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 
-import ShowcaseSorting from "@/components/ShowcaseSorting";
+import ShowcaseSorting from "@/components/app/main/ShowcaseSorting";
 import ShowcaseLoading from "./ShowcaseLoading";
 
 // lazyloading components
-const ShowcaseView = dynamic(() => import("@/components/ShowcaseView"), {
-   loading: () => <ShowcaseLoading />,
-});
+const ShowcaseView = dynamic(
+   () => import("@/components/app/main/ShowcaseView"),
+   {
+      loading: () => <ShowcaseLoading />,
+   }
+);
 
 export default function ShowcaseSection() {
    const [selectValue, setSelectValue] = useState("newest");

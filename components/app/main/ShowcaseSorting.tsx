@@ -6,8 +6,8 @@ import {
    SelectItem,
    SelectTrigger,
    SelectValue,
-} from "./ui/select";
-import { Button } from "./ui/button";
+} from "../../ui/select";
+import { Button } from "../../ui/button";
 import { AlignJustify, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 

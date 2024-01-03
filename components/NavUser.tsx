@@ -5,6 +5,7 @@ import Image from "next/image";
 import {
    CreditCard,
    Heart,
+   LogOut,
    LucideIcon,
    Mail,
    ShoppingCart,
@@ -18,6 +19,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "./ui/button";
 import { formatCurrency } from "@/lib/utils";
+import Link from "next/link";
 
 type NavUserProps = { session: Session; locale: string };
 
@@ -68,7 +70,10 @@ export default function NavUser({ session, locale }: NavUserProps) {
          </Button>
 
          <PopoverContent className="flex flex-col space-y-2 bg-white p-2 rounded-lg shadow-lg max-w-60">
-            <div className="flex items-center space-x-4 bg-accent absolute top-0 inset-x-0 p-2 rounded-md">
+            <Link
+               href={`${locale}/profile`}
+               className="flex items-center space-x-4 bg-accent absolute top-0 inset-x-0 py-2 px-3 rounded-md"
+            >
                <div className="flex-shrink-0">
                   <Image
                      alt="user image"
@@ -86,7 +91,7 @@ export default function NavUser({ session, locale }: NavUserProps) {
                      Wallet Balance
                   </p>
                </div>
-            </div>
+            </Link>
             <div className="w-full pt-[52px]"></div>
             {userNavOptions(locale).map((option, index) => (
                <div

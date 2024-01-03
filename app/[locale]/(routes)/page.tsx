@@ -2,13 +2,13 @@ import AdsSVG from "@/public/images/offer-pic.svg";
 import { useTranslations } from "next-intl";
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import SliderSection from "@/components/SliderSection";
-import CategoriesSection from "@/components/CategoriesSection";
+import SliderSection from "@/components/app/main/SliderSection";
+import CategoriesSection from "@/components/app/main/CategoriesSection";
 
 import MainPageContext from "@/components/context/MainPage.context";
 import { Locale } from "@/types/global";
 import Image from "next/image";
-import ShowcaseSection from "@/components/ShowcaseSection";
+import ShowcaseSection from "@/components/app/main/ShowcaseSection";
 
 type PageProps = {
    params: {

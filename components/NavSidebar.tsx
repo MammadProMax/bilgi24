@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import NavSearch from "./NavSearch";
 import NavLang from "./NavLang";
-import LogoIcon from "./global/LogoIcon";
+import LogoIcon from "./LogoIcon";
 
 export default function NavSidebar() {
    return (

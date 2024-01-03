@@ -4,7 +4,7 @@ import { API_URL } from "@/lib/config";
 import { cookies as Cookie } from "next/headers";
 import { redirect } from "next/navigation";
 
-export const confirmLogin = async (formData: FormData) => {
+export const confirmLogin = async (locale: string, formData: FormData) => {
    const rawFormData = {
       username: formData.get("username"),
       password: formData.get("password"),
@@ -37,5 +37,5 @@ export const confirmLogin = async (formData: FormData) => {
       //   notFound();
    }
 
-   redirect("/");
+   redirect(`/${locale}/profile`);
 };

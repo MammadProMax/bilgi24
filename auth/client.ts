@@ -4,6 +4,7 @@ import { Session, getServerSession } from "./server";
 
 // returns client side authorization session
 export function useSession() {
+   const [isPending, setIsPending] = useState(true);
    const [session, setSession] = useState<Session | undefined>(undefined);
 
    const pathname = usePathname();
@@ -12,6 +13,7 @@ export function useSession() {
       const handleAsync = async () => {
          const _session = await getServerSession();
          setSession(_session);
+         setIsPending(false);
       };
 
       handleAsync();
@@ -19,5 +21,5 @@ export function useSession() {
       // refetch for user auth for each path
    }, [pathname]);
 
-   return { session };
+   return { session, isPending };
 }

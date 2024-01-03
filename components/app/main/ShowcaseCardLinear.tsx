@@ -5,7 +5,7 @@ import type { Post } from "@/types/main";
 
 import { Card } from "@/components/ui/card";
 import { Calendar, Hash, Heart, MapPin, MessageSquareMore } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../../ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
 
 export default function ShowcaseCardLinear({ post }: { post: Post }) {

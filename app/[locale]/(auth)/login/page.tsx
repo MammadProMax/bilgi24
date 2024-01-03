@@ -18,6 +18,7 @@ import { confirmLogin } from "./action";
 
 export default function LoginPage({ params }: Props) {
    const { session, isPending } = useSession();
+   const formAction = confirmLogin.bind(null, params.locale);
 
    const router = useRouter();
 
@@ -30,7 +31,7 @@ export default function LoginPage({ params }: Props) {
    return (
       <MaxWidthWrapper className="min-h-screen">
          <div className="w-64 mx-auto">
-            <form action={confirmLogin} className="flex flex-col gap-4">
+            <form action={formAction} className="flex flex-col gap-4">
                <div>
                   <label htmlFor="username">username</label>
                   <Input type="text" name="username" />

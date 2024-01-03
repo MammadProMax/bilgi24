@@ -7,7 +7,7 @@ import Link from "next/link";
 import { mainPageContext } from "@/components/context/MainPage.context";
 
 // coponents
-import ShowcaseCardLinear from "@/components/ShowcaseCardLinear";
+import ShowcaseCardLinear from "@/components/app/main/ShowcaseCardLinear";
 
 import {
    Pagination,

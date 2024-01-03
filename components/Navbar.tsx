@@ -7,7 +7,7 @@ import { useSession } from "@/auth/client";
 import { LogIn, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import MaxWidthWrapper from "./MaxWidthWrapper";
-import LogoIcon from "./global/LogoIcon";
+import LogoIcon from "./LogoIcon";
 import NavSearch from "./NavSearch";
 import NavSidebar from "./NavSidebar";
 import NavLang from "./NavLang";

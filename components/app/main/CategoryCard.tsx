@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Card, CardDescription } from "./ui/card";
+import { Card, CardDescription } from "../../ui/card";
 import { Category } from "@/types/main";
 import { cn } from "@/lib/utils";
 
