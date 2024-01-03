@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 import { Heart, Home, LucideIcon, Mail, Plus, UserIcon } from "lucide-react";
@@ -22,12 +22,12 @@ const navigations: Navigations[] = [
    },
    {
       name: "Messages",
-      href: "/message",
+      href: "/profile?tab=messages",
       Icon: Mail,
    },
    {
       name: "Watchlist",
-      href: "/watchlist",
+      href: "/profile?tab=watchlist",
       Icon: Heart,
    },
    {
@@ -39,9 +39,14 @@ const navigations: Navigations[] = [
 
 export default function BottomNavbar({ locale }: { locale: string }) {
    const pathname = usePathname();
+   const searchParams = useSearchParams();
 
    const isActive = (href: string) =>
-      href === "/" ? pathname === `/${locale}` : pathname.includes(href);
+      href === "/"
+         ? pathname === `/${locale}`
+         : searchParams.has("tab")
+         ? href.includes(searchParams.get("tab") ?? "no-tab")
+         : pathname.includes(href);
 
    return (
       <div className="bg-accent shadow-md border-t border-t-border relative">

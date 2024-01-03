@@ -10,12 +10,17 @@ type ProfileProps = {
    params: {
       locale: string;
    };
+
    children: React.ReactNode;
+   messages: React.ReactNode;
+   watchlist: React.ReactNode;
 };
 
 export default async function ProfileLayout({
    params,
    children,
+   watchlist,
+   messages,
 }: ProfileProps) {
    const session = await getServerSession();
    if (!session || !session.userId) {
@@ -27,12 +32,16 @@ export default async function ProfileLayout({
          {/* body */}
          <nav className="fixed inset-x-0 top-0 z-50">
             <Navbar locale={params.locale} />
-         </nav>{" "}
+         </nav>
          {/* seperator */}
          <div className="pt-[72px] w-full bg-primary" />
-         {/* seperator */}
          <SidebarMenu session={session} locale={params.locale} />
-         <main className="md:pl-64 pl-16">{children}</main>
+         {/* main routes */}
+         <main className="md:pl-64 pl-16">
+            {children}
+            {messages}
+            {watchlist}
+         </main>
          <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
             <BottomNavbar locale={params.locale} />
          </div>

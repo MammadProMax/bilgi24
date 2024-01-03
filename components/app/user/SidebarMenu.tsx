@@ -35,7 +35,7 @@ const sidebarMenuOptions: SidebarMenuOptions[] = [
    },
    {
       name: "Messages",
-      tab: "message",
+      tab: "messages",
       Icon: Mail,
       shouldHideOnMobile: true,
    },
