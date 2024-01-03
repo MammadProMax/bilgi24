@@ -16,7 +16,6 @@ import NavUser from "./NavUser";
 
 export default function Navbar({ locale }: { locale: string }) {
    const { session } = useSession();
-   console.log(session);
 
    const [navIsTop, setNavIsTop] = useState(true);
 
@@ -47,7 +46,7 @@ export default function Navbar({ locale }: { locale: string }) {
                   <NavSearch className="bg-transparent lg:w-96 w-64 placeholder:text-gray-300 focus-visible:ring-teal-900" />
                </div>
             </div>
-            <div className="flex items-center gap-x-0.5 md:gap-x-4">
+            <div className="flex items-center gap-x-0.5 md:gap-x-3">
                <div className="md:block hidden">
                   <NavLang />
                </div>

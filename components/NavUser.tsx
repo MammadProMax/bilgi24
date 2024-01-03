@@ -60,7 +60,12 @@ const userNavOptions = (locale: string): UserNavOption[] => [
 export default function NavUser({ session, locale }: NavUserProps) {
    return (
       <Popover>
-         <Button asChild variant={"ghost"} size="sm" className="gap-x-1.5">
+         <Button
+            asChild
+            variant={"ghost"}
+            size="sm"
+            className="gap-x-1.5 border-gray-300 border"
+         >
             <PopoverTrigger>
                <span className="hidden lg:block">
                   {session.firstName} {session.lastName}{" "}
@@ -71,7 +76,7 @@ export default function NavUser({ session, locale }: NavUserProps) {
 
          <PopoverContent className="flex flex-col space-y-2 bg-white p-2 rounded-lg shadow-lg max-w-60">
             <Link
-               href={`${locale}/profile`}
+               href={`/${locale}/profile`}
                className="flex items-center space-x-4 bg-accent absolute top-0 inset-x-0 py-2 px-3 rounded-md"
             >
                <div className="flex-shrink-0">

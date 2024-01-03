@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "@/auth/server";
 
 import Navbar from "@/components/Navbar";
+import SidebarMenu from "@/components/app/user/SidebarMenu";
+import BottomNavbar from "@/components/BottomNavbar";
 
 type ProfileProps = {
    params: {
@@ -22,9 +24,18 @@ export default async function ProfileLayout({
 
    return (
       <>
+         {/* body */}
          <nav className="fixed inset-x-0 top-0 z-50">
             <Navbar locale={params.locale} />
-         </nav>
+         </nav>{" "}
+         {/* seperator */}
+         <div className="pt-[72px] w-full bg-primary" />
+         {/* seperator */}
+         <SidebarMenu session={session} locale={params.locale} />
+         <main className="md:pl-64 pl-16">{children}</main>
+         <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
+            <BottomNavbar locale={params.locale} />
+         </div>
       </>
    );
 }

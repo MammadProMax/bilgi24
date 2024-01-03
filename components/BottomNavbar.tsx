@@ -17,7 +17,7 @@ type Navigations = {
 const navigations: Navigations[] = [
    {
       name: "User",
-      href: "/user",
+      href: "/profile",
       Icon: UserIcon,
    },
    {

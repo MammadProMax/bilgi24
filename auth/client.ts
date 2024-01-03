@@ -10,6 +10,7 @@ export function useSession() {
    const pathname = usePathname();
 
    useEffect(() => {
+      setIsPending(true);
       const handleAsync = async () => {
          const _session = await getServerSession();
          setSession(_session);
