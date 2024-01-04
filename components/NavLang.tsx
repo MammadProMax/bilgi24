@@ -59,6 +59,9 @@ export default function NavLang() {
    const [open, setOpen] = useState(false);
 
    const pathname = usePathname();
+   const currentPathnameWithoutLocale = pathname.slice(3);
+   const generateLanguageHref = (href: string) =>
+      href + currentPathnameWithoutLocale;
    const detectedLanguage = languages.find(
       (lang) => lang.title.toLowerCase() === pathname.slice(1, 3)
    );
@@ -92,7 +95,7 @@ export default function NavLang() {
                {languages.map((lang) => (
                   <Link
                      onClick={() => handleLanguageClick(lang.href)}
-                     href={lang.href}
+                     href={generateLanguageHref(lang.href)}
                      key={lang.title}
                      className="w-full transition flex gap-x-2 hover:bg-muted justify-center items-center py-2"
                   >

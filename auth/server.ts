@@ -10,6 +10,7 @@ export type Session = {
    lastName: string;
    image: string;
    balance: number;
+   isCompany: boolean;
 };
 
 // returns server side authorization session
@@ -31,5 +32,6 @@ export const getServerSession: () => Promise<
       lastName: data.lastName,
       image: data.user_photo,
       balance: data.balance,
+      isCompany: data.isCompany,
    };
 };

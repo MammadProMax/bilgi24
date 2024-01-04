@@ -20,7 +20,6 @@ export const confirmLogin = async (locale: string, formData: FormData) => {
       });
 
       const res = await requset.json();
-      console.log(res);
 
       const cookies = Cookie();
 

@@ -18,7 +18,7 @@ export default function ShowcaseCardLinear({ post }: { post: Post }) {
             src={post.image}
             width={110}
             height={100}
-            className="aspect-square object-cover flex-shrink-0"
+            className="aspect-square object-cover flex-shrink-0 rounded-md"
          />
          <div className="flex-[0.6] space-y-1.5 sm:space-y-0.5">
             <h6 className="line-clamp-1 font-semibold text-sm sm:text-base">
@@ -54,7 +54,7 @@ export default function ShowcaseCardLinear({ post }: { post: Post }) {
                </p>
             </div>
          </div>
-         <div className="flex-[0.4] flex flex-col items-center text-center justify-center gap-2">
+         <div className="flex-[0.4] flex flex-col-reverse relative top-[15px] sm:top-2.5 items-center text-center justify-center gap-2">
             <div className="font-semibold text-sky-600 truncate w-[100px] sm:w-fit text-sm sm:text-base">
                {formatCurrency(post.price)}
             </div>

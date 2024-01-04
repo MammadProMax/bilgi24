@@ -22,12 +22,12 @@ const navigations: Navigations[] = [
    },
    {
       name: "Messages",
-      href: "/profile?tab=messages",
+      href: "/profile/messages",
       Icon: Mail,
    },
    {
       name: "Watchlist",
-      href: "/profile?tab=watchlist",
+      href: "/profile/watchlist",
       Icon: Heart,
    },
    {
@@ -44,9 +44,7 @@ export default function BottomNavbar({ locale }: { locale: string }) {
    const isActive = (href: string) =>
       href === "/"
          ? pathname === `/${locale}`
-         : searchParams.has("tab")
-         ? href.includes(searchParams.get("tab") ?? "no-tab")
-         : pathname.includes(href);
+         : pathname === `/${locale}${href}`;
 
    return (
       <div className="bg-accent shadow-md border-t border-t-border relative">

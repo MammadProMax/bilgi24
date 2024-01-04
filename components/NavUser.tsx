@@ -28,32 +28,40 @@ type UserNavOption = {
    Icon: LucideIcon;
    href: string;
    iconClassName?: string;
+   isCompany?: boolean;
 };
 const userNavOptions = (locale: string): UserNavOption[] => [
    {
       title: "Messages",
-      href: `/${locale}/profile?tab=message`,
+      href: `/${locale}/profile/messages`,
       Icon: Mail,
    },
    {
       title: "Watchlist",
-      href: `/${locale}/profile?tab=message`,
+      href: `/${locale}/profile/watchlist`,
       Icon: Heart,
    },
    {
       title: "Purchases",
-      href: `/${locale}/profile?tab=message`,
+      href: `/${locale}/profile/purchases`,
       Icon: CreditCard,
    },
    {
       title: "Wallet",
-      href: `/${locale}/profile?tab=message`,
+      href: `/${locale}/profile/wallet`,
       Icon: Wallet,
    },
    {
-      title: "My shop",
-      href: `/${locale}/profile?tab=message`,
+      title: "My Ads",
+      href: `/${locale}/profile/my-ads`,
       Icon: ShoppingCart,
+      isCompany: false,
+   },
+   {
+      title: "My shop",
+      href: `/${locale}/profile/my-shop`,
+      Icon: ShoppingCart,
+      isCompany: true,
    },
 ];
 
@@ -67,7 +75,7 @@ export default function NavUser({ session, locale }: NavUserProps) {
             className="gap-x-1.5 border-gray-300 border"
          >
             <PopoverTrigger>
-               <span className="hidden lg:block">
+               <span className="hidden lg:block max-w-[100px] truncate">
                   {session.firstName} {session.lastName}{" "}
                </span>
                <User className="w-5 h-5" />
@@ -85,7 +93,7 @@ export default function NavUser({ session, locale }: NavUserProps) {
                      src={session.image}
                      width={45}
                      height={45}
-                     className="rounded-full"
+                     className="rounded-full aspect-square"
                   />
                </div>
                <div>
@@ -98,20 +106,28 @@ export default function NavUser({ session, locale }: NavUserProps) {
                </div>
             </Link>
             <div className="w-full pt-[52px]"></div>
-            {userNavOptions(locale).map((option, index) => (
-               <div
-                  key={index}
-                  className="group flex items-center gap-x-2 p-2 rounded-md hover:bg-muted transition-colors duration-200 ease-in-out cursor-pointer"
-               >
-                  <option.Icon
-                     className="text-muted-foreground w-5 h-5
+            {userNavOptions(locale).map((option, index) => {
+               if (
+                  typeof option.isCompany === "boolean" &&
+                  option.isCompany !== session.isCompany
+               )
+                  return null;
+
+               return (
+                  <div
+                     key={index}
+                     className="group flex items-center gap-x-2 p-2 rounded-md hover:bg-muted transition-colors duration-200 ease-in-out cursor-pointer"
+                  >
+                     <option.Icon
+                        className="text-muted-foreground w-5 h-5
                   transition duration-200 group-hover:text-foreground/40 group-hover:fill-secondary"
-                  />
-                  <span className="text-muted-foreground text-sm group-hover:text-primary">
-                     {option.title}
-                  </span>
-               </div>
-            ))}
+                     />
+                     <span className="text-muted-foreground text-sm group-hover:text-primary">
+                        {option.title}
+                     </span>
+                  </div>
+               );
+            })}
          </PopoverContent>
       </Popover>
    );

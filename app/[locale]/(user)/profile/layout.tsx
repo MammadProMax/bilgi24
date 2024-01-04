@@ -19,8 +19,6 @@ type ProfileProps = {
 export default async function ProfileLayout({
    params,
    children,
-   watchlist,
-   messages,
 }: ProfileProps) {
    const session = await getServerSession();
    if (!session || !session.userId) {
@@ -37,11 +35,10 @@ export default async function ProfileLayout({
          <div className="pt-[72px] w-full bg-primary" />
          <SidebarMenu session={session} locale={params.locale} />
          {/* main routes */}
-         <main className="md:pl-64 pl-16">
-            {children}
-            {messages}
-            {watchlist}
-         </main>
+         <main className="md:pl-64 pl-16 pb-">{children}</main>
+
+         {/* seperator */}
+         <div className="pb-14 md:hidden"></div>
          <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
             <BottomNavbar locale={params.locale} />
          </div>
