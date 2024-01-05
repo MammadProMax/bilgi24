@@ -31,6 +31,7 @@ type ProfileComboboxProps = {
    onChange: (id: number) => void;
    list: ComboboxItem[];
    label: string;
+   onLocationChange: (val: number) => void;
 };
 
 export default function ProfileCombobox({
@@ -38,6 +39,7 @@ export default function ProfileCombobox({
    onChange,
    list,
    label,
+   onLocationChange,
 }: ProfileComboboxProps) {
    const [open, setOpen] = React.useState(false);
 
@@ -59,16 +61,18 @@ export default function ProfileCombobox({
          <PopoverContent className="w-[200px] p-0">
             <Command>
                <CommandInput placeholder={`Search ${label}...`} />
-               <CommandEmpty>No {label} found.</CommandEmpty>
+               {list.length !== 0 && (
+                  <CommandEmpty>No {label} found.</CommandEmpty>
+               )}
                <CommandGroup className="max-h-56 overflow-auto scroll-scondary">
                   {list.map((item) => (
                      <CommandItem
-                        key={item.value}
+                        key={item.id}
                         value={item.value}
                         onSelect={() => {
                            const currentId = item.id;
-                           onChange(currentId === id ? 0 : currentId!);
-
+                           onChange(currentId === id ? 0 : currentId);
+                           onLocationChange(currentId === id ? 0 : currentId);
                            setOpen(false);
                         }}
                      >
@@ -81,6 +85,12 @@ export default function ProfileCombobox({
                         {item.label}
                      </CommandItem>
                   ))}
+
+                  {list.length === 0 && (
+                     <div className="text-sm text-center my-6">
+                        No {label} found.
+                     </div>
+                  )}
                </CommandGroup>
             </Command>
          </PopoverContent>

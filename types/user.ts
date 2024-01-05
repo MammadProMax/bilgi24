@@ -13,8 +13,13 @@ export type UserProfile = {
    firstName: string;
    lastName: string;
    isCompany: Boolean;
-   stateId: number;
-   cityId: number;
-   districtId: number;
+   state: {
+      id: number;
+   };
+   city: {
+      id: number;
+   };
+   district: {
+      id: number;
+   };
 };
-
