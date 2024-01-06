@@ -1,16 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Dropzone from "react-dropzone";
 import { UserProfile } from "@/types/user";
 
-import { Camera } from "lucide-react";
 import {
    Form,
    FormField,
@@ -21,10 +18,9 @@ import {
 import { Button } from "@/components/ui/button";
 import ProfileFormField from "./ProfileFormField";
 import ProfileCombobox from "./ProfileCombobox";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { API_URL } from "@/lib/config";
-import { City, District, State } from "@/types/global";
+import { useMutation } from "@tanstack/react-query";
 import { useLocation } from "@/hooks/useLocation";
+import { toast } from "sonner";
 
 type ProfileFormProps = {
    userData: UserProfile;
@@ -35,15 +31,13 @@ const formSchema = z.object({
    firstName: z.string().min(3).max(40),
    lastName: z.string().min(3).max(40),
    name: z.string().min(3).max(40),
-   number: z
-      .string()
-      .max(20)
-      .regex(/^05[0-9]{9}$/, "Phone number is not valid"),
+   number: z.string().max(20),
    fixedNumber: z.string().max(20).nullable(),
    whatsapp: z.string().max(30).nullable(),
    instagram: z.string().max(30).nullable(),
    facebook: z.string().max(30).nullable(),
    telegram: z.string().max(30).nullable(),
+   image: z.string(),
    cityId: z.coerce.number(),
    stateId: z.coerce.number(),
    districtId: z.coerce.number(),
@@ -51,11 +45,14 @@ const formSchema = z.object({
 
 export type FormSchema = z.infer<typeof formSchema>;
 
-export default function ProfileForm({ userData, locale }: ProfileFormProps) {
+import { updateProfile } from "@/actions/user";
+import ProfileImgModal from "./ProfileImgModal";
+
+export default function ProfileForm({ userData }: ProfileFormProps) {
    const [locationIds, setLocationIds] = useState({
-      stateId: userData.state.id,
-      districtId: userData.city.id,
-      neighborId: userData.district.id,
+      stateId: userData.state?.id ?? 0,
+      districtId: userData.city?.id ?? 0,
+      neighborId: userData.district?.id ?? 0,
    });
 
    const { districtList, neighborList, stateList } = useLocation({
@@ -75,15 +72,33 @@ export default function ProfileForm({ userData, locale }: ProfileFormProps) {
          instagram: userData.instagram,
          whatsapp: userData.whatsapp,
          telegram: userData.telegram,
+         image: userData.user_photo,
          // there is issue in backend where data of city and districts and state passed misplaced
-         cityId: userData.city.id,
-         districtId: userData.district.id,
-         stateId: userData.state.id,
+         cityId: userData.city?.id ?? 0,
+         districtId: userData.district?.id ?? 0,
+         stateId: userData.state?.id ?? 0,
+      },
+   });
+
+   const { mutate: updateUser, isPending: isUpdatingUser } = useMutation({
+      mutationFn: (values: FormSchema) => updateProfile(values),
+      mutationKey: ["updateProfile"],
+      onSuccess: () => {
+         toast.success("Profile updated", {
+            position: "top-right",
+         });
+      },
+      onError: () => {
+         toast.error("Somthing went wrong", {
+            position: "top-right",
+         });
       },
    });
 
    const handleSubmitForm = async (values: FormSchema) => {
-      alert(JSON.stringify(values, null, 3));
+      // updateUser(values);
+      console.log(form.getValues("image"));
+      console.log(values);
    };
 
    return (
@@ -92,13 +107,13 @@ export default function ProfileForm({ userData, locale }: ProfileFormProps) {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 md gap-4">
                <div className="w-full md:row-span-3 bg-accent flex items-center justify-center pt-2 rounded-md">
                   <div className="p-1 border border-border w-fit place-self-center row-span-2 rounded-md relative">
-                     <Image
-                        src={userData.user_photo}
-                        alt="profile image"
-                        width={150}
-                        height={150}
+                     <ProfileImgModal
+                        ImageSrc={form.getValues("image")}
+                        onImageChange={(path) => {
+                           console.log(path);
+                           form.setValue("image", path);
+                        }}
                      />
-                     <Camera className="w-5 h-5 absolute top-1 left-1 text-secondary" />
                   </div>
                </div>
 
@@ -276,7 +291,9 @@ export default function ProfileForm({ userData, locale }: ProfileFormProps) {
                   />
                )}
             </div>
-            <Button type="submit">submit</Button>
+            <Button disabled={isUpdatingUser} type="submit">
+               submit
+            </Button>
          </form>
       </Form>
    );

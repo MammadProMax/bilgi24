@@ -3,8 +3,13 @@ import type { Metadata } from "next";
 import { Noto_Sans, Dancing_Script } from "next/font/google";
 import "@/app/globals.css";
 
+import { Locale } from "@/types/global";
 import Providers from "@/components/providers/index";
+import MainPageContext from "@/components/context/MainPage.context";
+
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
+// import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const fontDancingScript = Dancing_Script({
@@ -35,7 +40,13 @@ export default function layout({
                fontSans.variable
             )}
          >
-            <Providers>{children}</Providers>
+            <Providers>
+               <MainPageContext locale={params.locale as Locale}>
+                  {/* main page context */}
+                  {children}
+               </MainPageContext>
+            </Providers>
+            <Toaster position="top-right" />
          </body>
       </html>
    );

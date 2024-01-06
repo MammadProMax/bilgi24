@@ -15,11 +15,11 @@ export type UserProfile = {
    isCompany: Boolean;
    state: {
       id: number;
-   };
+   } | null;
    city: {
       id: number;
-   };
+   } | null;
    district: {
       id: number;
-   };
+   } | null;
 };

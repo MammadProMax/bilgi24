@@ -17,6 +17,7 @@ const userProfile = async () => {
       next: {
          tags: ["user-profile"],
       },
+      cache: "no-store",
    });
    const data = await request.json();
    return data.data as UserProfile;
