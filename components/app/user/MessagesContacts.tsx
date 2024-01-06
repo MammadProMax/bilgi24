@@ -6,6 +6,7 @@ import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { User } from "lucide-react";
+import Link from "next/link";
 
 type ContactProps = {};
 
@@ -24,7 +25,10 @@ export default function MessagesContacts({}: ContactProps) {
          )}
       >
          <div className="w-full h-full flex flex-col p-1.5 sm:p-5">
-            <div className="flex justify-between items-center w-full p-3 rounded-md hover:bg-muted">
+            <Link
+               href={`/${locale}/profile/messages?messageId=1`}
+               className="flex justify-between items-center w-full p-3 rounded-md hover:bg-muted"
+            >
                <div className="flex gap-3">
                   <div className="w-9 h-9 sm:w-12 sm:h-12 ring-1 ring-blue-500 bg-white rounded-full flex justify-center items-center">
                      <User />
@@ -43,7 +47,7 @@ export default function MessagesContacts({}: ContactProps) {
                <div className="h-fit self-start mt-1 text-xs text-muted-foreground">
                   <span className="h-fit">01/10/2024</span>
                </div>
-            </div>
+            </Link>
          </div>
       </div>
    );
