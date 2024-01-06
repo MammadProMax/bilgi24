@@ -96,9 +96,7 @@ export default function ProfileForm({ userData }: ProfileFormProps) {
    });
 
    const handleSubmitForm = async (values: FormSchema) => {
-      // updateUser(values);
-      console.log(form.getValues("image"));
-      console.log(values);
+      updateUser(values);
    };
 
    return (

@@ -77,7 +77,7 @@ export default function SidebarMenu({ locale, session }: SidebarMenuProps) {
    const isActiveLink = (href: string) => pathname === `/${locale}${href}`;
 
    return (
-      <div className="fixed transition-all duration-500 ease-out left-0 inset-y-0 md:w-64 mt-[72px] w-16">
+      <div className="fixed z-40 transition-all duration-500 ease-out left-0 inset-y-0 md:w-64 mt-[72px] w-16">
          <div className="border-r border-border shadow-lg bg-accent h-full transition-all overflow-hidden">
             <div className="w-full py-6 text-center text-xl font-semibold text-primary hidden md:block">
                {session.firstName} {session.lastName}

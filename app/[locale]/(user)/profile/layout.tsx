@@ -35,7 +35,7 @@ export default async function ProfileLayout({
          <div className="pt-[72px] w-full bg-primary" />
          <SidebarMenu session={session} locale={params.locale} />
          {/* main routes */}
-         <main className="md:pl-64 pl-16 pb-">{children}</main>
+         <main className="md:pl-64 pl-16">{children}</main>
 
          {/* seperator */}
          <div className="pb-14 md:hidden"></div>
