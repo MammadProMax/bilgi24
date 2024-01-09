@@ -50,15 +50,17 @@ export default function ProfileCombobox({
                variant="outline"
                role="combobox"
                aria-expanded={open}
-               className="w-[200px] justify-between"
+               className="w-full justify-between"
             >
-               {id
-                  ? list.find((item) => item.id === id)?.label
-                  : `Select ${label}...`}
+               {id ? (
+                  list.find((item) => item.id === id)?.label
+               ) : (
+                  <span className="line-clamp-1">Select {label}...</span>
+               )}
                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
          </PopoverTrigger>
-         <PopoverContent className="w-[200px] p-0">
+         <PopoverContent className="w-full p-0">
             <Command>
                <CommandInput placeholder={`Search ${label}...`} />
                {list.length !== 0 && (

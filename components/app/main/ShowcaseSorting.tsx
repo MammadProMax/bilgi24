@@ -40,7 +40,7 @@ export default function ShowcaseSorting({
                </SelectContent>
             </Select>
          </div>
-         <div className="hidden sm:flex">
+         <div className="hidden sm:flex flex-row-reverse">
             <Button
                size={"sm"}
                variant={"ghost"}

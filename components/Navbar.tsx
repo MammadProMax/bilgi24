@@ -67,7 +67,7 @@ export default function Navbar({ locale }: { locale: string }) {
                )}
 
                <Link
-                  href="/"
+                  href={`/${locale}/create-post`}
                   className={cn(
                      buttonVariants({ variant: "secondary", size: "sm" }),
                      "hidden md:flex"

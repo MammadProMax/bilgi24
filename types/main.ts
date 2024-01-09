@@ -11,7 +11,7 @@ export type Banner = {
 
 export type Category = {
    id: number;
-   name: "emlak";
+   name: string;
    icon: {
       path: string;
       thumb: string;
@@ -24,7 +24,7 @@ export type Category = {
 
 export type Post = {
    id: string;
-   slug: string;
+   title: string;
    state: { name: string };
    city: { name: string };
    price: number;

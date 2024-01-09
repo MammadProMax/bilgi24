@@ -215,9 +215,7 @@ export default function ProfileForm({ userData }: ProfileFormProps) {
                      />
                   )}
                />
-            </div>
-            <div className="flex flex-wrap md:col-span-3 gap-5 mb-4 mt-6">
-               {/*there is issue in backend where data of city and districts and state passed  misplaced */}
+
                <FormField
                   control={form.control}
                   name="stateId"
@@ -289,7 +287,14 @@ export default function ProfileForm({ userData }: ProfileFormProps) {
                   />
                )}
             </div>
-            <Button disabled={isUpdatingUser} type="submit">
+
+            {/*there is issue in backend where data of city and districts and state passed  misplaced */}
+
+            <Button
+               disabled={isUpdatingUser}
+               type="submit"
+               className="mt-4 px-12 md:px-20"
+            >
                submit
             </Button>
          </form>

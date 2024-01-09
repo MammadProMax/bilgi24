@@ -6,11 +6,9 @@ import type { Post } from "@/types/main";
 import { Card } from "@/components/ui/card";
 import { Calendar, Hash, Heart, MapPin, MessageSquareMore } from "lucide-react";
 import { Button } from "../../ui/button";
-import { formatCurrency, formatDate } from "@/lib/utils";
+import { capitalizeFirstLetter, formatCurrency, formatDate } from "@/lib/utils";
 
 export default function ShowcaseCardLinear({ post }: { post: Post }) {
-   const slugToTitle = (slug: string) => slug.split("-").join(" ");
-
    return (
       <Card className="flex items-center gap-x-3 w-full p-3 shadow-md overflow-hidden transition duration-300 hover:translate-x-2">
          <Image
@@ -22,14 +20,11 @@ export default function ShowcaseCardLinear({ post }: { post: Post }) {
          />
          <div className="flex-[0.6] space-y-1.5 sm:space-y-0.5">
             <h6 className="line-clamp-1 font-semibold text-sm sm:text-base">
-               {slugToTitle(post.slug)}
+               {capitalizeFirstLetter(post.title)}
             </h6>
             <div className="flex items-center justify-start gap-x-1">
-               <MapPin
-                  className="w-3 h-3 sm:w-4 sm:h-4 text-muted"
-                  fill="red"
-               />
-               <p className="text-muted-foreground line-clamp-1 text-xs sm:text-sm">
+               <MapPin className="w-4 h-4 text-white" fill="red" />
+               <p className="text-muted-foreground max-w-[110px] truncate text-xs sm:text-sm">
                   {post.state.name} / {post.city.name}
                </p>
             </div>

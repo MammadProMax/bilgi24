@@ -7,6 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // returns turkish currency formatted
+
+export const capitalizeFirstLetter = (str: string) => {
+   return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 export function formatCurrency(value: number) {
    return new Intl.NumberFormat("tr-TR", {
       style: "currency",

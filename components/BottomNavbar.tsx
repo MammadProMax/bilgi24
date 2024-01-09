@@ -67,9 +67,12 @@ export default function BottomNavbar({ locale }: { locale: string }) {
                </Link>
             ))}
             <div className="absolute -top-4">
-               <button className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-secondary flex items-center justify-center shadow-md hover:bg-[#e3a916] transition-colors duration-200 ease-in-out">
+               <Link
+                  href={`/${locale}/create-post`}
+                  className="rounded-full w-10 h-10 sm:w-12 sm:h-12 bg-secondary flex items-center justify-center shadow-md hover:bg-[#e3a916] transition-colors duration-200 ease-in-out"
+               >
                   <Plus className="text-white" />
-               </button>
+               </Link>
             </div>
          </div>
       </div>

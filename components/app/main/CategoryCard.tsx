@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Card, CardDescription } from "../../ui/card";
 import { Category } from "@/types/main";
-import { cn } from "@/lib/utils";
+import { capitalizeFirstLetter, cn } from "@/lib/utils";
 
 type CategoryCardProps = {
    category: Category;
@@ -30,7 +30,7 @@ export default function CategoryCard({
             height={size ?? 60}
          />
          <CardDescription className="text-muted font-sans text-sm leading-tight line-clamp-2 !mt-2 px-2.5">
-            {category.name}
+            {capitalizeFirstLetter(category.name)}
          </CardDescription>
       </Card>
    );

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Noto_Sans, Dancing_Script } from "next/font/google";
+import { Noto_Sans, Vazirmatn } from "next/font/google";
 import "@/app/globals.css";
 
 import { Locale } from "@/types/global";
@@ -12,9 +12,9 @@ import { Toaster } from "@/components/ui/sonner";
 // import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
-const fontDancingScript = Dancing_Script({
+const fontVazir = Vazirmatn({
    subsets: ["latin"],
-   variable: "--font-dancing-script",
+   variable: "--font-vazir",
 });
 
 export const metadata: Metadata = {
@@ -36,8 +36,9 @@ export default function layout({
          <body
             className={cn(
                "min-h-screen font-sans scroll-scondary",
-               fontDancingScript.variable,
-               fontSans.variable
+               fontVazir.variable,
+               fontSans.variable,
+               params.locale === "fa" && "font-vazir"
             )}
          >
             <Providers>

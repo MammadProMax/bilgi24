@@ -1,3 +1,5 @@
+import { Post } from "./main";
+
 export type UserProfile = {
    id: number;
    number: string;
@@ -22,4 +24,28 @@ export type UserProfile = {
    district: {
       id: number;
    } | null;
+};
+
+export type Message = {
+   id: number;
+   content: string;
+   lang: string;
+   type: string;
+   reply: number;
+   isRead: boolean;
+   isDeleted: boolean;
+   isMe: boolean;
+   date: number;
+   time: string;
+   chatId: number;
+   createdAt: string;
+};
+
+export type Chat = {
+   id: number;
+   user: UserProfile;
+   contact: UserProfile;
+   ad: Post;
+   isArchived: 0 | 1;
+   messages: Message[];
 };

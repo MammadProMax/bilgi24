@@ -21,10 +21,7 @@ const config: Config = {
       extend: {
          fontFamily: {
             sans: ["var(--font-sans)", ...fontFamily.sans],
-            "dancing-script": [
-               "var(--font-dancing-script)",
-               ...fontFamily.sans,
-            ],
+            vazir: ["var(--font-vazir)", ...fontFamily.sans],
          },
          colors: {
             border: "hsl(var(--border))",

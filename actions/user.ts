@@ -2,6 +2,8 @@
 
 import { FormSchema as UpdateProfileSchema } from "@/components/app/user/ProfileForm";
 import { API_URL } from "@/lib/config";
+import { Category } from "@/types/main";
+import { Chat } from "@/types/user";
 import { cookies } from "next/headers";
 
 export const updateProfile = async (values: UpdateProfileSchema) => {
@@ -27,4 +29,20 @@ export const updateProfileImage = async (formData: FormData) => {
 
    const data = await req.json();
    return data;
+};
+
+export const getMessages = async (token: String) => {
+   const req = await fetch(API_URL + `chat/list/?lang=EN&auth=${token}`);
+   const res = await req.json();
+   return res.data.chats as Chat[];
+};
+
+export const getCategories = async function (locale: string, id: number = 0) {
+   try {
+      const req = await fetch(API_URL + `data/categories/${id}?lang=${locale}`);
+      const res = await req.json();
+      return res.data as Category[];
+   } catch (error) {
+      throw new Error("something went Wrong");
+   }
 };
